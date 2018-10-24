@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="address1" class="com.javatpoint.setter_injection.Address">
+        <property name="city">
+            <value>"Thanh Hoa"</value>
+        </property>
+        <property name="country">
+            <value>"Viet Nam"</value>
+        </property>
+    </bean>
+
+    <bean id="obj" class="com.javatpoint.setter_injection.Employee">
+        <property name="id">
+            <value>1</value>
+        </property>
+
+        <property name="name">
+            <value>Duy</value>
+        </property>
+
+        <property name="city" value="Thanh Hoa">
+        </property>
+
+        <property name="address" ref="address1">
+        </property>
+    </bean>
+
+    <bean id="answer1" class="com.javatpoint.setter_injection.Answer">
+        <property name="id" value="1"></property>
+        <property name="name" value="Duy dep trai vo doi"></property>
+        <property name="by" value="Hung"></property>
+    </bean>
+
+    <bean id="answer2" class="com.javatpoint.setter_injection.Answer">
+        <property name="id" value="2"></property>
+        <property name="name" value="Duy dep trai so 2 khong ai so 1"></property>
+        <property name="by" value="Tung"></property>
+    </bean>
+
+    <bean id="qlist" class="com.javatpoint.setter_injection.QuestionList">
+        <property name="id" value="1"></property>
+        <property name="name" value="Duy dep trai so may the gioi?"></property>
+        <property name="answers">
+            <list>
+                <ref bean="answer1"></ref>
+                <ref bean="answer2"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="qmap1" class="com.javatpoint.setter_injection.QuestionMap">
+        <property name="id" value="1"></property>
+        <property name="name" value="Duy dep trai so may the gioi?"></property>
+        <property name="answers">
+            <map>
+                <entry key="Duy dep trai vo doi" value="Hung"></entry>
+                <entry key="Duy dep trai so 2 khong ai so 1" value="Tung"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="user1" class="com.javatpoint.setter_injection.User">
+        <property name="id" value="1"></property>
+        <property name="name" value="Hung"></property>
+        <property name="email" value="hung@gmail.com"></property>
+    </bean>
+
+    <bean id="qmap2" class="com.javatpoint.setter_injection.QuestionMap1">
+        <property name="id" value="1"></property>
+        <property name="name" value="Duy dep trai so may the gioi?"></property>
+        <property name="answers">
+            <map>
+                <entry key-ref="answer1" value-ref="user1"></entry>
+                <entry key-ref="answer2" value-ref="user1"></entry>
+            </map>
+        </property>
+    </bean>
+</beans>
